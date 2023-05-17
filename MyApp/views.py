@@ -10,3 +10,18 @@ def home(request):
     else:
         return redirect('login')
     return render(request, 'login.html')
+
+# sign up view 
+def signup(request):
+    if request.method == 'POST':
+        uname = request.POST.get('uname')
+        pwd = request.POST.get('pwd')
+        # print(uname, pwd)
+        if User.objects.filter(username=uname).count()>0:
+            return HttpResponse('Username already exists.')
+        else:
+            user = User(username=uname, password=pwd)
+            user.save()
+            return redirect('login')
+    else:
+        return render(request, 'signup.html')
