@@ -25,3 +25,18 @@ def signup(request):
             return redirect('login')
     else:
         return render(request, 'signup.html')
+    
+# login view 
+def login(request):
+    if request.method == 'POST':
+        uname = request.POST.get('uname')
+        pwd = request.POST.get('pwd')
+
+        check_user = User.objects.filter(username=uname, password=pwd)
+        if check_user:
+            request.session['user'] = uname
+            return redirect('home')
+        else:
+            return HttpResponse('Please enter valid Username or Password.')
+
+    return render(request, 'login.html')
