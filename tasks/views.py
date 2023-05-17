@@ -15,3 +15,8 @@ def task_create(request):
         form = TaskForm()
 
     return render(request, "tasks/task_form.html", { "form": form, })
+
+# Retrieve task list
+def task_list(request):
+    tasks = Task.objects.all()
+    return render(request, "tasks/task_list.html", { "tasks": tasks,})
