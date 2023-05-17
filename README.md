@@ -19,4 +19,7 @@
 # Add Task 
 ![Login Page](./ReadmeImg/newTask.png)
 
-
+# Install Project
+### python manage.py makemigrations
+### python manage.py migrate
+### python manage.py runserver
