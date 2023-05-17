@@ -38,3 +38,8 @@ def task_update(request, pk):
         form = TaskForm(instance=task_obj)
 
     return render(request, "tasks/task_form.html", { "form": form, "object": task_obj})
+# Delete a single task
+def task_delete(request, pk):
+    task_obj = get_object_or_404(Task, pk=pk)
+    task_obj.delete()
+    return redirect(reverse("tasks:task_list"))
