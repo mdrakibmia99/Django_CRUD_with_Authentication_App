@@ -1,4 +1,6 @@
+from django.http import HttpResponse
 from django.shortcuts import redirect, render
+from .models import User
 
 # Create your views here.
 # Create your views here.
