@@ -40,3 +40,10 @@ def login(request):
             return HttpResponse('Please enter valid Username or Password.')
 
     return render(request, 'login.html')
+# log out view 
+def logout(request):
+    try:
+        del request.session['user']
+    except:
+        return redirect('login')
+    return redirect('login')
